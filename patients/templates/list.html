@@ -1,0 +1,7 @@
+<h1>Patients</h1>
+
+<p>Patient list goes here...</p>
+
+{% for p in patients %}
+  <p>{{p.id}} - {{p.name}} - {{p.phone}}</p>
+{% endfor %}

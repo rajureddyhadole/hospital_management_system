@@ -1,0 +1,7 @@
+<h1>Doctors</h1>
+
+<p>doctors list goes here...</p>
+
+{% for doc in doctors %}
+<p>{{doc.id}} - {{doc.name}} - {{doc.specification}}</p>
+{% endfor %}
