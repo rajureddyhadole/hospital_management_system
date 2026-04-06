@@ -1,0 +1,72 @@
+<style>
+  .dashboard-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+    font-family: Arial, sans-serif;
+  }
+  .dashboard-title {
+    margin-bottom: 24px;
+    font-size: 2rem;
+    color: #1f2937;
+    text-align: center;
+  }
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+  .dashboard-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+    padding: 28px 22px;
+    text-align: center;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .dashboard-card:hover {
+    transform: translateY(-4px);
+    border-color: #d1d5db;
+    box-shadow: 0 16px 32px rgba(15, 23, 42, 0.12);
+  }
+  .dashboard-card a {
+    color: #111827;
+    text-decoration: none;
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .dashboard-card a:hover {
+    color: rgb(72, 72, 246);
+  }
+  .dashboard-card p {
+    color: #6b7280;
+    margin: 0;
+    font-size: 0.98rem;
+    line-height: 1.6;
+  }
+</style>
+
+<div class="dashboard-container">
+  <h1 class="dashboard-title">Dashboard</h1>
+  <div class="dashboard-grid">
+    <div class="dashboard-card">
+      <a href="/patients">Patients</a>
+      <p>View and manage patient records, appointments, and medical history.</p>
+    </div>
+    <div class="dashboard-card">
+      <a href="/doctors">Doctors</a>
+      <p>View doctor profiles, schedules, and availability.</p>
+    </div>
+    <div class="dashboard-card">
+      <a href="/appointments">Appointments</a>
+      <p>Check upcoming appointments and manage booking details.</p>
+    </div>
+    <div class="dashboard-card">
+      <a href="/logout">Logout</a>
+      <p>Sign out of the application securely.</p>
+    </div>
+  </div>
+</div>
