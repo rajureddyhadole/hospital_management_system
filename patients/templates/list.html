@@ -70,24 +70,59 @@
   .action-links a {
     display: inline-block;
     margin-right: 10px;
-    color: #2563eb;
-    text-decoration: none;
     font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s ease;
   }
-  .action-links a:last-child {
-    margin-right: 0;
+  .action-links a.edit {
+    color: #2563eb;
+  }
+  .action-links a.delete {
+    color: #dc2626;
+  }
+  .action-links a:hover {
+    text-decoration: underline;
   }
   .empty-state {
     padding: 28px 16px;
     color: #6b7280;
     text-align: center;
   }
+  .btn-primary,
+  .btn-back {
+    border: none;
+    border-radius: 12px;
+    padding: 12px 22px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.15s ease;
+  }
+  .btn-back {
+    background: #2563eb;
+    color: white;
+  }
+  .btn-back:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+  }
+  .new-btn {
+    background: #10b981;
+    color: white;
+  }
+  .new-btn:hover {
+    background: #059669;
+    transform: translateY(-1px);
+  }
 </style>
 
 <div class="list-page-container">
   <div class="list-page-header">
     <h1>Patients</h1>
-    <a class="btn-back" href="/dashboard">Back to Dashboard</a>
+    <div style="display:flex; gap:12px; flex-wrap:wrap;">
+      <a class="btn-back" href="/dashboard">Back to Dashboard</a>
+      <a class="btn-back new-btn" href="/patients/create">New Patient +</a>
+    </div>
   </div>
 
   <div class="table-card">
@@ -110,8 +145,8 @@
             <td>{{ p.phone }}</td>
             <td>{{ p.email }}</td>
             <td class="action-links">
-              <a href="/patients/{{ p.id }}/edit">Edit</a>
-              <a href="/patients/{{ p.id }}/delete">Delete</a>
+              <a class="edit" href="/patients/{{ p.id }}/edit">Edit</a>
+              <a class="delete" href="/patients/{{ p.id }}/delete">Delete</a>
             </td>
           </tr>
           {% empty %}
