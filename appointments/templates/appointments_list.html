@@ -1,0 +1,157 @@
+<style>
+  .list-page-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px;
+    font-family: Arial, sans-serif;
+    color: #111827;
+  }
+  .list-page-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .list-page-header h1 {
+    margin: 0;
+    font-size: 2rem;
+    letter-spacing: -0.03em;
+  }
+  .btn-back {
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 18px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.2s ease;
+  }
+  .btn-back:hover {
+    background: #1d4ed8;
+  }
+  .table-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+    overflow: hidden;
+  }
+  .table-responsive {
+    width: 100%;
+    overflow-x: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+  }
+  th, td {
+    padding: 18px 16px;
+    text-align: left;
+    border-bottom: 1px solid #f3f4f6;
+  }
+  th {
+    background: #f8fafc;
+    color: #374151;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  td {
+    color: #4b5563;
+    font-size: 0.98rem;
+  }
+  tr:hover td {
+    background: #f9fafb;
+  }
+  .action-links a {
+    display: inline-block;
+    margin-right: 10px;
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .action-links a:last-child {
+    margin-right: 0;
+  }
+  .empty-state {
+    padding: 28px 16px;
+    color: #6b7280;
+    text-align: center;
+  }
+  .btn-primary,
+  .btn-back {
+    border: none;
+    border-radius: 12px;
+    padding: 12px 22px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.15s ease;
+  }
+  .btn-back {
+    background: #2563eb;
+    color: white;
+  }
+  .btn-back:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+  }
+  .new-btn {
+    background: #10b981;
+    color: white;
+  }
+  .new-btn:hover {
+    background: #059669;
+    transform: translateY(-1px);
+  }
+</style>
+
+<div class="list-page-container">
+  <div class="list-page-header">
+    <h1>Appointments</h1>
+    <div style="display:flex; gap:12px; flex-wrap:wrap;">
+      <a class="btn-back" href="/dashboard">Back to Dashboard</a>
+      <a class="btn-back new-btn" href="/appointments/create">New Appointment +</a>
+    </div>
+  </div>
+
+  <div class="table-card">
+    <div class="table-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Doctor Name</th>
+            <th>Patient Name</th>
+            <th>Time</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for a in appointments %}
+          <tr>
+            <td>{{ a.id }}</td>
+            <td>{{ a.doctor }}</td>
+            <td>{{ a.patient }}</td>
+            <td>{{ a.appointment_time }}</td>
+            <td>{{ a.appointment_status }}</td>
+            <td class="action-links">
+              <a href="/appointments/{{ a.id }}/edit">Edit</a>
+              <a href="/appointments/{{ a.id }}/delete">Delete</a>
+            </td>
+          </tr>
+          {% empty %}
+          <tr>
+            <td colspan="4" class="empty-state">No Appointments found yet.</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

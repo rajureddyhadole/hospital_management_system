@@ -4,7 +4,7 @@ from django.db import models
 class Appointment(models.Model):
   patient = models.ForeignKey('patients.Patient', on_delete=models.CASCADE)
   doctor = models.ForeignKey('doctors.Doctor', on_delete=models.CASCADE)
-  appointment_date = models.DateTimeField()
+  appointment_time = models.DateTimeField()
   appointment_status = models.CharField(max_length=200)
 
   def __str__(self):
