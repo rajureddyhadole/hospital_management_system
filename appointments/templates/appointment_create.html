@@ -1,0 +1,111 @@
+<style>
+  .page-container {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 24px;
+    font-family: Arial, sans-serif;
+    color: #111827;
+  }
+  .page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .page-header h1 {
+    margin: 0;
+    font-size: 2rem;
+    letter-spacing: -0.03em;
+  }
+  .card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+    box-shadow: 0 14px 28px rgba(15, 23, 42, 0.08);
+    padding: 30px;
+  }
+  .form-grid {
+    display: grid;
+    gap: 18px;
+  }
+  .form-grid input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 12px;
+    background: #f8fafc;
+    color: #111827;
+    font-size: 1rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .form-grid input:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+  }
+  .form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 14px;
+  }
+  .btn-primary,
+  .btn-secondary {
+    border: none;
+    border-radius: 12px;
+    padding: 12px 22px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.2s ease;
+  }
+  .btn-primary {
+    background: #2563eb;
+    color: white;
+  }
+  .btn-primary:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+  }
+  .btn-secondary {
+    background: #f8fafc;
+    color: #374151;
+    border: 1px solid #d1d5db;
+  }
+  .btn-secondary:hover {
+    background: #eef2ff;
+  }
+</style>
+
+<div class="page-container">
+  <div class="page-header">
+    <h1>Create New Appointment</h1>
+    <a class="btn-secondary" href="/appointments/">Back to Appointments</a>
+  </div>
+
+  <div class="card">
+    <form method="POST" class="form-grid">
+      {% csrf_token %}
+      <select name="doctor">
+        <option value="">-- Select Doctor --</option>
+        {% for d in doctors %}
+          <option value="{{ d.id }}">{{ d.name }}</option>
+        {% endfor %}
+      </select>
+      <select name="patient">
+        <option value="">-- Select Patient --</option>
+        {% for p in patients %}
+          <option value="{{ p.id }}">{{ p.name }}</option>
+        {% endfor %}
+      </select>
+      <input type="datetime-local" placeholder="Appointment time" name="time">
+      <input type="text" placeholder="Appointment Status" name="status">
+      <div class="form-actions">
+        <button type="submit" class="btn-primary">Create Appointment</button>
+        <a class="btn-secondary" href="/appointments/">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>
