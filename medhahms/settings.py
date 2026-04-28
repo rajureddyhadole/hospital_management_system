@@ -131,3 +131,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = '/login/'
 
 RESEND_API_KEY =  "re_5MvBGKvs_8aXyyiWH6w7a1AZLA4qfG3uz"
+
+GEMINI_API_KEY = "AIzaSyAattkc3qwHIw9sgGLRQpyyaE_hZh06O_o"

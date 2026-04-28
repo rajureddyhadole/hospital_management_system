@@ -1,0 +1,99 @@
+
+<style>
+  .dashboard-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+    font-family: Arial, sans-serif;
+  }
+  .dashboard-title {
+    margin-bottom: 24px;
+    font-size: 2rem;
+    color: #1f2937;
+    text-align: center;
+  }
+  .dashboard-subtitle {
+    color: #6b7280;
+    text-align: center;
+    font-size: 1rem;
+    margin-bottom: 24px;
+  }
+  .ai-form-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+    padding: 28px 22px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .form-group {
+    margin-bottom: 20px;
+  }
+  .form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    resize: vertical;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .form-group textarea:focus {
+    outline: none;
+    border-color: rgb(72, 72, 246);
+    box-shadow: 0 0 0 3px rgba(72, 72, 246, 0.1);
+  }
+  .answer-box {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 20px;
+    color: #1f2937;
+    min-height: 60px;
+    line-height: 1.6;
+  }
+  .submit-button {
+    background-color: rgb(72, 72, 246);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    width: 100%;
+  }
+  .submit-button:hover {
+    background-color: rgb(56, 56, 220);
+    box-shadow: 0 4px 12px rgba(72, 72, 246, 0.3);
+  }
+  .submit-button:active {
+    background-color: rgb(48, 48, 200);
+  }
+</style>
+
+<div class="dashboard-container">
+  <h1 class="dashboard-title">Medha AI</h1>
+  <p class="dashboard-subtitle">Ask Medha related queries to our Medha AI</p>
+
+  <div class="ai-form-card">
+    <form method="POST">
+      {% csrf_token %}
+      <div class="form-group">
+        <textarea name="query" rows="4" placeholder="Enter a Question" required></textarea>
+      </div>
+      {% if answer %}
+      <div class="form-group">
+        <div class="answer-box">{{ answer }}</div>
+      </div>
+      {% endif %}
+      <button type="submit" class="submit-button">Ask Medha AI</button>
+    </form>
+  </div>
+</div>
+
