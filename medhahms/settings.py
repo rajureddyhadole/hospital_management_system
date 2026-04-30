@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'dashboard',
     'appointments',
     "anymail",
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
