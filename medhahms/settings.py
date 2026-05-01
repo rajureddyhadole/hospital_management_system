@@ -15,7 +15,11 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
@@ -132,5 +136,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = '/login/'
 
 RESEND_API_KEY =  "re_5MvBGKvs_8aXyyiWH6w7a1AZLA4qfG3uz"
-
-GEMINI_API_KEY = "AIzaSyAattkc3qwHIw9sgGLRQpyyaE_hZh06O_o"

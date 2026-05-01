@@ -88,8 +88,9 @@
   <div class="card">
     <form method="POST" class="form-grid">
       {% csrf_token %}
-      <input type="text" placeholder="Name" name="name">
-      <input type="text" placeholder="specialization" name="specialization">
+      
+      {{form.as_p}}
+
       <div class="form-actions">
         <button type="submit" class="btn-primary">Create Doctor</button>
         <a class="btn-secondary" href="/doctors">Cancel</a>

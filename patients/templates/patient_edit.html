@@ -88,10 +88,9 @@
   <div class="card">
     <form method="POST" class="form-grid">
       {% csrf_token %}
-      <input type="text" placeholder="Name" name="name" value="{{ patient.name }}">
-      <input type="text" placeholder="Phone number" name="phone" value="{{ patient.phone }}">
-      <input type="email" placeholder="Email" name="email" value="{{ patient.email }}">
-      <div class="form-actions">
+
+      {{form.as_p}}
+      
         <button type="submit" class="btn-primary">Save Changes</button>
         <a class="btn-secondary" href="/patients">Cancel</a>
       </div>
