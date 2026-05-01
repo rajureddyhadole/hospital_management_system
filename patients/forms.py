@@ -1,6 +1,7 @@
-from django import forms
+from django.forms import ModelForm
+from .models import Patient
 
-class PatientForm(forms.Form):
-  name = forms.CharField(max_length=100)
-  phone = forms.CharField()
-  email = forms.EmailField()
+class PatientForm(ModelForm):
+  class Meta:
+    model = Patient
+    fields = ['name', 'phone', 'email']

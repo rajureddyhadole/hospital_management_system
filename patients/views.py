@@ -14,20 +14,13 @@ def patient_edit(request, pk):
   patient = get_object_or_404(Patient, pk=pk)
 
   if request.method == 'POST':
-    form = PatientForm(request.POST)
+    form = PatientForm(request.POST, instance=patient)
     
     if form.is_valid():
-      patient.name = form.cleaned_data['name']
-      patient.phone = form.cleaned_data['phone']
-      patient.email = form.cleaned_data['email']
-      patient.save()
+      form.save()
       return redirect('/patients')
   else:
-    form = PatientForm(initial={
-      'name': patient.name,
-      'phone': patient.phone,
-      'email': patient.email
-    })
+    form = PatientForm(instance=patient)
 
   return render(request, 'patient_edit.html', {'form': form})
 
@@ -38,15 +31,7 @@ def patient_create(request):
     form = PatientForm(request.POST)
 
     if form.is_valid():
-      name = form.cleaned_data['name']
-      phone = form.cleaned_data['phone']
-      email = form.cleaned_data['email']
-
-      Patient.objects.create(
-        name=name,
-        phone=phone,
-        email=email
-      )
+      form.save()
       return redirect('/patients')
   else:
     form = PatientForm()
