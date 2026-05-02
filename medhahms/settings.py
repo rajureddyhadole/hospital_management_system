@@ -17,9 +17,9 @@ RESEND_API_KEY = os.getenv("RESEND_API_KEY")
 SECRET_KEY = 'django-insecure-1gbkpl52g)x2jr=fv+6$q%d5kvpwm!rrblrv)46gpuyv8-jph&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
