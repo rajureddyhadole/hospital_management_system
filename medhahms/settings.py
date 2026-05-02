@@ -51,6 +51,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+  "https://hospital-management-system-yytw.onrender.com"
+]
+
 ROOT_URLCONF = 'medhahms.urls'
 
 TEMPLATES = [
